@@ -1,2 +1,19 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+  import Tree from "../Tree.svelte";
+  import type { TreeData } from "../Tree.svelte";
+
+  const treeData: TreeData = [
+    {
+      id: "books",
+      children: [{ id: "1", children: [{ id: "bbb" }] }, { id: "2" }],
+    },
+    {
+      id: "movies",
+      children: [{ id: "3" }, { id: "4", children: [{ id: "aaa" }] }],
+    },
+  ];
+</script>
+
+<Tree data={treeData}>
+  <svelte:fragment slot="node" let:node>{node.id}</svelte:fragment>
+</Tree>
